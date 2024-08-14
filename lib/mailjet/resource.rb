@@ -354,5 +354,9 @@ module Mailjet
       end
     end
 
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.to_s.end_with?('=', '?') || attributes.include?(method_name.to_s) || super
+    end
+
   end
 end
